@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  app:
+    container_name: daniladocker
+    build: .
+    ports:
+      - 8081:8081
+    command: java -jar --spring.profiles.active=dev backend.jar
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/itlab
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+    links:
+      - db
+  db:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: itlab
