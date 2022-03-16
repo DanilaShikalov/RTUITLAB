@@ -1,30 +1,50 @@
-version: "3.8"
+version: '3.4'
+
 services:
-  postgres:
-    image: postgres:10
-    container_name: java-postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - data:/data
-    environment:
-      - 'POSTGRES_USER=postgres'
-      - 'POSTGRES_PASSWORD=root'
-      - 'POSTGRES_DB=itlab'
-  app:
-    image: java-app
-    container_name: java-app
+  rtu_postgresdb:
+    image: postgres
+    container_name: rtu_postgres
     restart: always
     ports:
-      - "8081:8081"
+    - "5432:5432"
     environment:
-      - 'POSTGRES_USER=postgres'
-      - 'POSTGRES_PASSWORD=root'
-      - 'POSTGRES_DB=itlab'
-
-volumes:
-  data: {}
-
-networks:
-  default:
-    name: postgres_network
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=itlab
+  liquibase:
+    container_name: liquibase
+    image: liquibase/liquibase
+    command: --url=jdbc:postgresql://rtu_postgresdb:5432/itlab?user=postgres&password=root --changeLogFile=changelog.xml update
+    volumes:
+      - ./config/changelog.xml:/liquibase/changelog.xml
+      - ./scripts:/liquibase/scripts
+    depends_on:
+      - rtu_postgresdb
+  restaurant:
+    image: dockermirea/restuarant
+    container_name: restuarant
+    restart: always
+    ports:
+    - "8081:8081"
+    depends_on:
+      - rtu_postgresdb
+      - liquibase
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://rtu_postgresdb:5432/itlab
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=itlab
+  producer:
+    image: dockermirea/producer
+    container_name: producer
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - rtu_postgresdb
+      - liquibase
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://rtu_postgresdb:5432/itlab
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=itlab

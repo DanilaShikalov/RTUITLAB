@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  jackson:
+    serialization:
+      indent_output: true
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/itlab'
+    username: 'postgres'
+    password: 'root'
+    hikari:
+      catalog: 'public'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        default_schema: 'public'
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+  liquibase:
+    change-log: 'classpath:db/changelog/db.changelog-master.xml'
+    default-schema: 'public'
+  sql:
+    init:
+      platform: postgres
