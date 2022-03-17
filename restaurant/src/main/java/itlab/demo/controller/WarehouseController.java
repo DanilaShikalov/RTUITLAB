@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class WarehouseController {
     private final WarehouseService warehouseService;
-
     @PostMapping
     @ApiOperation(value = "Запись заявок",
             notes = "Запись запроса в бд и получение созданного объекта")

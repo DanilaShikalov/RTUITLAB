@@ -13,8 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class IngredientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_id_generator")
-    @SequenceGenerator(name = "ingredient_id_generator", sequenceName = "ingredient_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_menu;
     private Long id_warehouse;

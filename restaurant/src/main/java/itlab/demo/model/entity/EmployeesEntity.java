@@ -14,8 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class EmployeesEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employees_id_generator")
-    @SequenceGenerator(name = "employees_id_generator", sequenceName = "employees_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_position;
     private String name;

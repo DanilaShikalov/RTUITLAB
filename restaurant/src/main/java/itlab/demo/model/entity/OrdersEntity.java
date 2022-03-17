@@ -15,8 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class OrdersEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_id_generator")
-    @SequenceGenerator(name = "orders_id_generator", sequenceName = "orders_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_employees;
     private Date date_open;

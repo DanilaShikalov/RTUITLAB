@@ -67,7 +67,7 @@ public class HistoryService {
 
     public List<GetHistoryLowDTO> getRequests() throws JSONException {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<List<GetHistoryLowDTO>> responseEntity = restTemplate.exchange("http://restaurant:8081/api/warehouse/low",
+        ResponseEntity<List<GetHistoryLowDTO>> responseEntity = restTemplate.exchange("http://localhost:8081/api/warehouse/low",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<GetHistoryLowDTO>>() {
@@ -79,20 +79,26 @@ public class HistoryService {
         assert list != null;
         PostHistoryDTO postHistoryDTO;
         Date currentSqlDate = new Date(System.currentTimeMillis());
-        for (GetHistoryLowDTO getHistoryLowDTO: list) {
-            warehouseJSON.put("id_unit", getHistoryLowDTO.getId_unit());
-            warehouseJSON.put("id_product", getHistoryLowDTO.getId_product());
-            warehouseJSON.put("title", getHistoryLowDTO.getTitle());
-            warehouseJSON.put("weight", getHistoryLowDTO.getWeight());
-            warehouseJSON.put("amount", getHistoryLowDTO.getAmount() + 1);
-            warehouseJSON.put("price", getHistoryLowDTO.getPrice());
-            HttpEntity<String> request = new HttpEntity<String>(warehouseJSON.toString(), headers);
-            restTemplate.put("http://restaurant:8081/api/warehouse/" + getHistoryLowDTO.getId(), request);
-            postHistoryDTO = PostHistoryDTO.builder().id_product(getHistoryLowDTO.getId_product())
-                    .amount(1)
-                    .date_delivery(currentSqlDate)
-                    .build();
-            this.createHistory(postHistoryDTO);
+        for (GetHistoryLowDTO x: list) {
+            if (productRepository.findById(x.getId_product()).orElseThrow(() -> new ProductNotFoundException(x.getId_product()))
+                        .getAmount() != 0) {
+                warehouseJSON.put("id_unit", x.getId_unit());
+                warehouseJSON.put("id_product", x.getId_product());
+                warehouseJSON.put("title", x.getTitle());
+                warehouseJSON.put("weight", x.getWeight());
+                warehouseJSON.put("amount", x.getAmount() + 1);
+                warehouseJSON.put("price", x.getPrice());
+                HttpEntity<String> request = new HttpEntity<String>(warehouseJSON.toString(), headers);
+                restTemplate.put("http://localhost:8081/api/warehouse/" + x.getId(), request);
+                postHistoryDTO = PostHistoryDTO.builder().id_product(x.getId_product())
+                        .amount(1)
+                        .date_delivery(currentSqlDate)
+                        .build();
+                this.createHistory(postHistoryDTO);
+                ProductEntity productEntity = productRepository.findById(x.getId_product()).orElseThrow(() -> new ProductNotFoundException(x.getId_product()));
+                productEntity.setAmount(productEntity.getAmount() - 1);
+                productRepository.save(productEntity);
+            }
         }
         return list;
     }

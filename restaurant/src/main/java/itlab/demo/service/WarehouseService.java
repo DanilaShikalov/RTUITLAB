@@ -10,11 +10,9 @@ import itlab.demo.model.dto.ingredient.GetIngredientsMenuDTO;
 import itlab.demo.model.dto.warehouse.*;
 import itlab.demo.model.entity.WarehouseEntity;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
