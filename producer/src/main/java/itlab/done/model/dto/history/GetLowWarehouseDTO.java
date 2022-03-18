@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetHistoryLowDTO {
+public class GetLowWarehouseDTO {
     private Long id;
     private Long id_unit;
     private Long id_product;

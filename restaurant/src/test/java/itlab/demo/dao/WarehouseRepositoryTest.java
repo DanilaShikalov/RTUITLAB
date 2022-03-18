@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -24,6 +25,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RestaurantApp.class)
+@Transactional
 class WarehouseRepositoryTest {
     @Autowired
     private WarehouseRepository warehouseRepository;
@@ -58,8 +60,6 @@ class WarehouseRepositoryTest {
         WarehouseEntity warehouseEntity = new WarehouseEntity(null, 1L,
                 1L, "торт", 500,
                 5, 340, null, null);
-
-        warehouseRepository.save(warehouseEntity);
 
         WarehouseEntity warehouseEntityTest = warehouseRepository.save(warehouseEntity);
         warehouseEntityTest.setId(warehouseEntity.getId());

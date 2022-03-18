@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RestaurantApp.class)
+@Transactional
 class UnitRepositoryTest {
     @Autowired
     private UnitRepository unitRepository;

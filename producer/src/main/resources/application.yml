@@ -20,6 +20,8 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: true
+  main:
+    allow-bean-definition-overriding: true
   sql:
     init:
       platform: postgres

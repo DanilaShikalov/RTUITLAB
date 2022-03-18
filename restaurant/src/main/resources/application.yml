@@ -23,6 +23,8 @@ spring:
   liquibase:
     change-log: 'classpath:db/changelog/db.changelog-master.xml'
     default-schema: 'public'
+  main:
+    allow-bean-definition-overriding: true
   sql:
     init:
       platform: postgres

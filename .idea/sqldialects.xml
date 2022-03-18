@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/producer/src/test/resources/itlab/done/dao/dataHistory.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/producer/src/test/resources/itlab/done/dao/dataProduct.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataDish.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataEmployees.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataIngredient.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataMenu.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataOrders.sql" dialect="H2" />
     <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataPositions.sql" dialect="H2" />
     <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataUnit.sql" dialect="H2" />
     <file url="file://$PROJECT_DIR$/restaurant/src/test/resources/itlab/demo/dao/dataWarehouse.sql" dialect="H2" />

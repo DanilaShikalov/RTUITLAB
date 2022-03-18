@@ -14,8 +14,7 @@ import java.sql.Date;
 @AllArgsConstructor
 public class HistoryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "history_id_generator")
-    @SequenceGenerator(name = "history_id_generator", sequenceName = "history_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_product;
     private int amount;

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RestaurantApp.class)
+@Transactional
 class PositionsRepositoryTest {
     @Autowired
     private PositionsRepository positionsRepository;

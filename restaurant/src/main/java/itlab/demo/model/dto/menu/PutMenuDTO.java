@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class PutMenuDTO {
     private Long id_unit;
     private String title;
-    private String price;
-    private String weight;
+    private int price;
+    private int weight;
 }
