@@ -17,18 +17,6 @@
 * [PostgreSQL](https://www.postgresql.org/)
 * [Liquibase](https://liquibase.org/)
 * [Swagger](https://swagger.io/)
-# Содержание
-1. [Функциональность проекта](#Функциональность-проекта)
-2. Описание микросервисов
-   1. [Identity](#Identity) 
-   2. [Purchases](#Purchases)  
-   3. [Shops](#Shops)  
-   4. [Factories](#Factories)  
-3. [Базы данных](#Базы-данных)
-4. [RabbitMQ](#RabbitMQ)
-5. [API Gateway (Ocelot)](#Api-Gateway-Ocelot)
-6. [Docker](#Docker)
-7. [UnitTests](#UnitTests)
 
 # Функциональность проекта
 Возможности клиента:
