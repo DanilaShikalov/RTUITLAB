@@ -8,6 +8,8 @@
 * Producer (Производитель) - 8082
 * RabbitMQ - 15672 & 5672
 * PostgreSQL - 5432
+* Eureka - 8888
+* Gateway - 8083
 # Стек проекта:
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Unit Tests](https://spring.io/guides/gs/testing-web/)
@@ -17,18 +19,10 @@
 * [PostgreSQL](https://www.postgresql.org/)
 * [Liquibase](https://liquibase.org/)
 * [Swagger](https://swagger.io/)
-# Содержание
-1. [Функциональность проекта](#Функциональность-проекта)
-2. Описание микросервисов
-   1. [Identity](#Identity) 
-   2. [Purchases](#Purchases)  
-   3. [Shops](#Shops)  
-   4. [Factories](#Factories)  
-3. [Базы данных](#Базы-данных)
-4. [RabbitMQ](#RabbitMQ)
-5. [API Gateway (Ocelot)](#Api-Gateway-Ocelot)
-6. [Docker](#Docker)
-7. [UnitTests](#UnitTests)
+* [Spring Security](https://spring.io/projects/spring-security)
+* [JWT](https://jwt.io/)
+* [Eureka](https://www.baeldung.com/spring-cloud-netflix-eureka)
+* [Gateway](https://spring.io/projects/spring-cloud-gateway)
 
 # Функциональность проекта
 Возможности клиента:
