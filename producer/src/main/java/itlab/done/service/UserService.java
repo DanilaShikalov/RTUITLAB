@@ -1,8 +1,8 @@
-package itlab.demo.service;
+package itlab.done.service;
 
 
-import itlab.demo.model.entity.Role;
-import itlab.demo.model.entity.User;
+import itlab.done.model.entity.Role;
+import itlab.done.model.entity.User;
 
 import java.util.List;
 

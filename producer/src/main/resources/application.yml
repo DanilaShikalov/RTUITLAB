@@ -13,7 +13,7 @@ spring:
     serialization:
       indent_output: true
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/itlab2'
+    url: 'jdbc:postgresql://localhost:5432/itlab'
     username: 'postgres'
     password: 'root'
     hikari:

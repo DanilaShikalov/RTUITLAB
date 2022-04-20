@@ -1,7 +1,7 @@
-package itlab.demo.security;
+package itlab.done.security;
 
-import itlab.demo.filter.CustomAuthenticationFilter;
-import itlab.demo.filter.CustomAuthorizationFilter;
+import itlab.done.filter.CustomAuthenticationFilter;
+import itlab.done.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -18,30 +18,31 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=itlab
   restaurant:
-    image: dockermirea/restuarant
+    image: dockermirea/restaurantup
     container_name: restuarant
     restart: always
     ports:
     - "8081:8081"
     depends_on:
       - rtu_postgresdb
-      - liquibase
       - rabbit
+      - eureka
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://rtu_postgresdb:5432/itlab
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=itlab
       - SPRING_RABBITMQ_HOST=rabbit
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8888/eureka
   producer:
-    image: dockermirea/producer
+    image: dockermirea/producerup
     container_name: producer
     restart: always
     ports:
       - "8082:8082"
     depends_on:
       - rtu_postgresdb
-      - liquibase
+      - eureka
       - rabbit
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://rtu_postgresdb:5432/itlab
@@ -49,3 +50,24 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=itlab
       - SPRING_RABBITMQ_HOST=rabbit
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8888/eureka
+  eureka:
+    image: dockermirea/eureka
+    container_name: eureka
+    restart: always
+    ports:
+      - "8888:8888"
+  gateway:
+    image: dockermirea/gateway
+    container_name: gateway
+    restart: always
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8888/eureka
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka
+      - restaurant
+      - rtu_postgresdb
+      - producer
+      - rabbit

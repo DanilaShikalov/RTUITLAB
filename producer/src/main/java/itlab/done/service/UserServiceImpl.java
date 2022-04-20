@@ -1,9 +1,9 @@
-package itlab.demo.service;
+package itlab.done.service;
 
-import itlab.demo.dao.RoleRepository;
-import itlab.demo.dao.UserRepository;
-import itlab.demo.model.entity.Role;
-import itlab.demo.model.entity.User;
+import itlab.done.dao.RoleRepository;
+import itlab.done.dao.UserRepository;
+import itlab.done.model.entity.Role;
+import itlab.done.model.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User saveUser(User user) {
         log.info("Saving new user {} to the database", user.getName());
-        log.info("Saving new password {} to the database", user.getPassword());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

@@ -1,6 +1,6 @@
-package itlab.demo.dao;
+package itlab.done.dao;
 
-import itlab.demo.model.entity.Role;
+import itlab.done.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
