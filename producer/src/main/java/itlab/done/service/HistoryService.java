@@ -84,44 +84,4 @@ public class HistoryService {
                     MQConfig.ROUTING_KEY_UP, x);
         }
     }
-
-//  Пример взаимодействия сервисов через RestTemplate
-
-//    public List<GetLowWarehouseDTO> getRequests() throws JSONException {
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<List<GetLowWarehouseDTO>> responseEntity = restTemplate.exchange("http://localhost:8081/api/warehouse/low",
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<List<GetLowWarehouseDTO>>() {
-//                });
-//        List<GetLowWarehouseDTO> list = responseEntity.getBody();
-//        JSONObject warehouseJSON = new JSONObject();
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        assert list != null;
-//        PostHistoryDTO postHistoryDTO;
-//        Date currentSqlDate = new Date(System.currentTimeMillis());
-//        for (GetLowWarehouseDTO x: list) {
-//            if (productRepository.findById(x.getId_product()).orElseThrow(() -> new ProductNotFoundException(x.getId_product()))
-//                        .getAmount() != 0) {
-//                warehouseJSON.put("id_unit", x.getId_unit());
-//                warehouseJSON.put("id_product", x.getId_product());
-//                warehouseJSON.put("title", x.getTitle());
-//                warehouseJSON.put("weight", x.getWeight());
-//                warehouseJSON.put("amount", x.getAmount() + 1);
-//                warehouseJSON.put("price", x.getPrice());
-//                HttpEntity<String> request = new HttpEntity<String>(warehouseJSON.toString(), headers);
-//                restTemplate.put("http://localhost:8081/api/warehouse/" + x.getId(), request);
-//                postHistoryDTO = PostHistoryDTO.builder().id_product(x.getId_product())
-//                        .amount(1)
-//                        .date_delivery(currentSqlDate)
-//                        .build();
-//                this.createHistory(postHistoryDTO);
-//                ProductEntity productEntity = productRepository.findById(x.getId_product()).orElseThrow(() -> new ProductNotFoundException(x.getId_product()));
-//                productEntity.setAmount(productEntity.getAmount() - 1);
-//                productRepository.save(productEntity);
-//            }
-//        }
-//        return list;
-//    }
 }

@@ -17,15 +17,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=itlab
-  liquibase:
-    container_name: liquibase
-    image: liquibase/liquibase
-    command: --url=jdbc:postgresql://rtu_postgresdb:5432/itlab?user=postgres&password=root --changeLogFile=changelog.xml update
-    volumes:
-      - ./config/changelog.xml:/liquibase/changelog.xml
-      - ./scripts:/liquibase/scripts
-    depends_on:
-      - rtu_postgresdb
   restaurant:
     image: dockermirea/restuarant
     container_name: restuarant
