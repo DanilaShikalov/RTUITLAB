@@ -2,7 +2,6 @@ package itlab.done.mapper;
 
 import itlab.done.model.dto.history.*;
 import itlab.done.model.entity.HistoryEntity;
-import itlab.done.model.entity.WarehouseEntity;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 

@@ -1,13 +1,15 @@
 # RTUITLAB (Автоматизация пиццерии)
 Проект реализован с требованиями, которые мог бы выдвинуть директор пиццерии для её автоматизации.\
 Схема взаимодействия микросервисов в проекте:
-![Схема](RTUITLABShema.png)
+![Схема](RTUITLAB.png)
 
 Порты, на которых располагаются микросервисы:
 * Restaurant (Ресторан) - 8081
 * Producer (Производитель) - 8082
 * RabbitMQ - 15672 & 5672
 * PostgreSQL - 5432
+* Eureka - 8888
+* Gateway - 8083
 # Стек проекта:
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Unit Tests](https://spring.io/guides/gs/testing-web/)

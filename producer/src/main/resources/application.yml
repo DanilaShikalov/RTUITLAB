@@ -1,6 +1,14 @@
 server:
   port: 8082
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://localhost:8888/eureka
 spring:
+  application:
+    name: producer
   jackson:
     serialization:
       indent_output: true
@@ -20,6 +28,8 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: true
+    hibernate:
+      ddl-auto: create
   main:
     allow-bean-definition-overriding: true
   sql:

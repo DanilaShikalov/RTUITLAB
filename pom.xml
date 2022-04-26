@@ -7,6 +7,8 @@
     <modules>
         <module>restaurant</module>
         <module>producer</module>
+        <module>eureka</module>
+        <module>gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
