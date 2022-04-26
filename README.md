@@ -17,6 +17,10 @@
 * [PostgreSQL](https://www.postgresql.org/)
 * [Liquibase](https://liquibase.org/)
 * [Swagger](https://swagger.io/)
+* [Spring Security](https://spring.io/projects/spring-security)
+* [JWT](https://jwt.io/)
+* [Eureka](https://www.baeldung.com/spring-cloud-netflix-eureka)
+* [Gateway](https://spring.io/projects/spring-cloud-gateway)
 
 # Функциональность проекта
 Возможности клиента:
